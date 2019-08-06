@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+    <form (ngSubmit)="onAddUser(f)" #f="ngForm" @fade>
+      <h3>Add User</h3>
+        <!-- ID -->
+        <div class="form-group">          
+          <label for="id">ID</label>
+          <input type="number" id="id" class="form-control" name="id" ngModel required #id= ngModel  pattern="^[1-9]+[0-9]*$">
+            <span class="help-block small" *ngIf="!id.valid && id.touched" style="color: red;">Valid ID is required.</span>          
+        </div>
+        <!-- Name -->
+        <div class="form-group">          
+          <label for="name">Name</label>
+          <input type="text" id="name" class="form-control" name="name" ngModel required #name= ngModel>
+            <span class="help-block small" *ngIf="!name.valid && name.touched" style="color: red;">Name is required.</span>          
+        </div>
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" ngModel class="form-control" #email = ngModel required>
+          <span class="help-block small" *ngIf="!email.valid && email.touched" style="color: red;">Please enter a valid email.</span>
+        </div>
+        <!-- Phone -->
+        <div class="form-group">
+          <label for="phone">Phone No.</label>
+          <input type="text" id="phone" name="phone" ngModel class="form-control" #phone = ngModel required>
+          <span class="help-block small" *ngIf="!phone.valid && phone.touched" style="color: red;">Phone number is required.</span>
+        </div>
+        <button class="btn btn-success" type="submit" [disabled]="!f.valid"> {{ editMode ? 'Update' : 'Add' }} </button>
+        <button class="btn btn-danger" type="button" (click)="onDelete()" *ngIf= "editMode">Delete</button>
+        <button class="btn btn-primary" type="button" (click)="onClear()">Clear</button>
+    </form>
+  </div>
+</div>
+
+
+
+
+
